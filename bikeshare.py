@@ -55,17 +55,13 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-
      # loading the data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-
     # converting the start time column
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-
     # extract month and day of week
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-
     # extracting hour from the Start Time column to create an hour column
     df['hour'] = df['Start Time'].dt.hour
 
@@ -82,8 +78,6 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
